@@ -2,10 +2,10 @@
   <v-container>
     <v-row style="margin-top: 25px">
       <v-col cols="8" style="text-align: left">
-        <h2>BADEC</h2>
+        <h2></h2>
       </v-col>
       <v-col cols="4" style="text-align: right">
-        <v-btn><v-icon class="fa fa-plus"></v-icon> Agregar Badec</v-btn>
+
       </v-col>
     </v-row>
     <v-row style="margin-top: 25px">
@@ -13,7 +13,7 @@
         <template v-if="desserts != null && desserts != 'undefined'">
           <v-card>
             <v-card-title>
-              Base de datos de contribuyentes
+              
               <v-spacer></v-spacer>
               <v-text-field
                 v-model="search"

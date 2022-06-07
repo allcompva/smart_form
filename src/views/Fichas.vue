@@ -1,11 +1,11 @@
 <template>
   <v-container v-if="desserts != null && desserts != 'undefined'">
     <v-row>
-      <v-col cols="12" style="text-align: right">
+      <v-col cols="12" style="text-align: right; margin-top:25px;">
         <v-btn
           @click="nuevaFicha()"
           style="background-color: #1c3e89 !important; color: white"
-          >NUEVA ENCUESTA
+          >NUEVO SMART FORM
         </v-btn>
       </v-col>
     </v-row>
@@ -13,7 +13,7 @@
       <v-col cols="12">
         <v-card>
           <v-card-title>
-            ENCUESTAS
+            FORMULARIOS
             <v-spacer></v-spacer>
             <v-text-field
               v-model="search"
@@ -38,20 +38,6 @@
                 {{ item.nombre }}
               </span>
             </template>
-            <template v-slot:[`item.entorno`]="{ item }">
-              <span
-                :style="[
-                  item.activo
-                    ? { padding: '5px' }
-                    : {
-                        'background-color': '#d3d3d359',
-                        opacity: '0.5',
-                      },
-                ]"
-              >
-                {{ item.entorno }}
-              </span>
-            </template>
             <template v-slot:[`item.id`]="{ item }">
               <v-menu top :close-on-content-click="closeOnContentClick">
                 <template v-slot:activator="{ on, attrs }">
@@ -61,6 +47,14 @@
                 </template>
 
                 <v-list>
+                  <v-list-item>
+                    <v-btn
+                      href="Smart_form?id=" 
+                      text
+                    >
+                      <v-icon small> mdi-search </v-icon> Ver
+                    </v-btn>
+                  </v-list-item>                  
                   <v-list-item>
                     <v-btn
                       @click="editaFicha(item.id, item.nombre, item.entorno)"
@@ -127,7 +121,7 @@
                 font-family: 'DM Sans';
               "
             >
-              ¿Esta seguro de eliminar la encuesta?
+              ¿Esta seguro de eliminar el smart form?
             </div>
           </v-card-text>
           <v-card-actions class="justify-end">
@@ -151,32 +145,18 @@
             "
             dark
           >
-            <v-card-title>Nueva Encuesta</v-card-title>
+            <v-card-title>Nuevo smart form</v-card-title>
           </v-toolbar>
 
           <v-card-text style="margin-top: 20px">
             <v-row>
-              <v-col cols="8">
+              <v-col cols="12">
                 <v-text-field
                   v-model="nombreFicha"
                   :rules="[rules.required]"
-                  label="Nombre Encuesta"
+                  label="Nombre smart form"
                 >
                 </v-text-field>
-              </v-col>
-              <v-col cols="4">
-                <v-select
-                  v-model="select"
-                  :hint="`${select.entorno}`"
-                  :items="items"
-                  item-text="state"
-                  item-value="state"
-                  label="Entorno"
-                  persistent-hint
-                  return-object
-                  single-line
-                >
-                </v-select>
               </v-col>
             </v-row>
           </v-card-text>
@@ -231,7 +211,6 @@ export default {
       search: "",
       headers: [
         { text: "NOMBRE", value: "nombre" },
-        { text: "ENTORNO", value: "entorno" },
         { text: "", value: "id" },
       ],
       rules: {
@@ -251,7 +230,6 @@ export default {
 
   async mounted() {
     try {
-        alert();
       this.desserts = (await this.$http.get("/Fichas/readCMS")).data;
     } catch (error) {
       this.desserts = null;
@@ -275,11 +253,6 @@ export default {
     async guardarEncuesta() {
       if (this.nombreFicha == "") {
         this.txtError = "Por favor ingrese el nombre de la ficha";
-        this.dialogError = true;
-        return;
-      }
-      if (this.select.state == "") {
-        this.txtError = "Por favor ingrese el entorno de la ficha";
         this.dialogError = true;
         return;
       }

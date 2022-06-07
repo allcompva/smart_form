@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
-        <v-img
+        <v-img style="display:none"
           alt="Vuetify Name"
           class="shrink mt-1 hidden-sm-and-down"
           contain
@@ -34,19 +34,7 @@
     <v-navigation-drawer v-model="drawer" absolute bottom temporary>
       <v-list nav dense style="text-align: left">
         <v-list-item>
-          <v-list-item-title>Menú 1</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item>
-          <v-list-item-title>Menú 2</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item>
-          <v-list-item-title>Menú 3</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item>
-          <v-list-item-title>Menú 4</v-list-item-title>
+          <v-list-item-title><v-btn href="./Fichas" style="width:100%; text-align:left;">FICHAS</v-btn></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

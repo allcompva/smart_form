@@ -29,6 +29,12 @@ const routes = [{
     name: 'Fichas',
     component: () =>
         import ( /* webpackChunkName: "Live" */ '../views/Fichas.vue')
+}, 
+{
+    path: '/Smart_form',
+    name: 'Smart_form',
+    component: () =>
+        import ( /* webpackChunkName: "Live" */ '../views/Smart_form.vue')
 },  ]
 const router = new VueRouter({
     mode: 'history',
