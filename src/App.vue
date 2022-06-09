@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="primary" dark v-if="
+						$router.currentRoute.name != 'Smart_form' 
+					">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-img style="display:none"
@@ -31,14 +33,18 @@
       </v-avatar>
       </v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary v-if="
+						$router.currentRoute.name != 'Smart_form' 
+					">
       <v-list nav dense style="text-align: left">
         <v-list-item>
           <v-list-item-title><v-btn href="./Fichas" style="width:100%; text-align:left;">FICHAS</v-btn></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-navigation-drawer v-model="drawer2" absolute temporary right>
+    <v-navigation-drawer v-model="drawer2" absolute temporary right v-if="
+						$router.currentRoute.name != 'Smart_form' 
+					">
       <template v-slot:prepend>
         <v-list-item two-line>
           <v-list-item-avatar>
