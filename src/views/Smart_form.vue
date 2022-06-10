@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid style="background-image: url('https://global-uploads.webflow.com/6165fc8b9937157a625da2ce/6165fc8b99371515475da45a_Mask%20Group%202.png');
+    <v-container fluid style="background-image: url('https://global-uploads.webflow.com/6165fc8b9937157a625da2ce/6165fc8b99371571455da3de_AdobeStock_151941226.jpeg');
     background-position: 50% 0;
     background-size: cover;
     background-repeat: no-repeat;"
@@ -14,7 +14,9 @@
                     <v-icon class="fa fa-user" style="font-size: 48px;
     color: #1a4736;"></v-icon>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" style="background-color: #ffffffc7;
+    text-align: center;
+    border-radius: 25px;">
                     <h2 style="color: rgb(26, 71, 54); font-size: 18px;">BEDA MARGOT MORA ARANEDA</h2>
                     <h2 style="color: rgb(26, 71, 54); font-size: 18px;">EIT#118726</h2>
                 </v-col>                
