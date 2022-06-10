@@ -31,7 +31,7 @@ const routes = [{
         import ( /* webpackChunkName: "Live" */ '../views/Fichas.vue')
 }, 
 {
-    path: '/Smart_form',
+    path: '/Smart_form/:id',
     name: 'Smart_form',
     component: () =>
         import ( /* webpackChunkName: "Live" */ '../views/Smart_form.vue')

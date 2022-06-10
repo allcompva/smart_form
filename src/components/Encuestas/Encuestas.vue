@@ -21,32 +21,44 @@
         <hr style="border: solid 1px #1a473642;
     padding-left: 10px;
     margin-left: 10px;
-    margin-right: 10px;"/>
+    margin-right: 10px;" />
         <h6 style="padding-left:10px;">Formulario de registro</h6>
       </v-card-title>
       <v-card-text style="margin-top: 20px">
-        <v-container v-for="(item, indice) in data.lstPreguntas" :key="indice">
-          <v-row>
-            <v-col cols="12" style="padding-top: 0;">
-              <v-radio-group v-if="item.tipo_pregunta == 1" style="margin-top: 0" v-model="respuestas[indice].respInt">
-                <v-radio color="indigo" v-for="(item2, indice2) in item.lstRespuestas" :key="indice2" :value="item2.id"
-                  :label="item2.texto"></v-radio>
-              </v-radio-group>
-              <div style="padding-bottom: 20px" v-if="item.tipo_pregunta == 2">
-                <v-checkbox hide-details style="margin-bottom: 0" color="indigo" v-model="respuestas[indice].respmulti"
-                  v-for="(item3, indice3) in item.lstRespuestas" :key="indice3" :value="item3.id" :label="item3.texto">
-                </v-checkbox>
-              </div>
-              <v-text-field v-if="item.tipo_pregunta == 3" outlined dense type="number" v-model="respuestas[indice].respInt">
-              </v-text-field>
-              <v-text-field v-if="item.tipo_pregunta == 4" :label="item.pregunta" outlined dense
-                v-model="respuestas[indice].respText">
-              </v-text-field>
-              <v-rating v-if="item.tipo_pregunta == 5" v-model="respuestas[indice].respInt" color="yellow darken-3"
-                background-color="grey darken-1" hover large></v-rating>
-            </v-col>
-          </v-row>
-        </v-container>
+        <v-row>
+          <v-col cols="8">
+            <v-container v-for="(item, indice) in data.lstPreguntas" :key="indice">
+              <v-row>
+                <v-col cols="12" style="padding-top: 0;">
+                  <v-radio-group v-if="item.tipo_pregunta == 1" style="margin-top: 0"
+                    v-model="respuestas[indice].respInt">
+                    <v-radio color="indigo" v-for="(item2, indice2) in item.lstRespuestas" :key="indice2"
+                      :value="item2.id" :label="item2.texto"></v-radio>
+                  </v-radio-group>
+                  <div style="padding-bottom: 20px" v-if="item.tipo_pregunta == 2">
+                    <v-checkbox hide-details style="margin-bottom: 0" color="indigo"
+                      v-model="respuestas[indice].respmulti" v-for="(item3, indice3) in item.lstRespuestas"
+                      :key="indice3" :value="item3.id" :label="item3.texto">
+                    </v-checkbox>
+                  </div>
+                  <v-text-field v-if="item.tipo_pregunta == 3" outlined dense type="number"
+                    v-model="respuestas[indice].respInt">
+                  </v-text-field>
+                  <v-text-field v-if="item.tipo_pregunta == 4" :label="item.pregunta" outlined dense
+                    v-model="respuestas[indice].respText">
+                  </v-text-field>
+                  <v-rating v-if="item.tipo_pregunta == 5" v-model="respuestas[indice].respInt" color="yellow darken-3"
+                    background-color="grey darken-1" hover large></v-rating>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-col>
+          <v-col cols="4">
+            <img
+              :src="data.imagen" />
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-col cols="12" style="text-align: center; margin-top: 10px; margin-bottom: 30px">
             <v-btn color="primary" :loading="load" @click="prueba()">ENVIAR</v-btn>

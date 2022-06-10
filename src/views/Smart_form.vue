@@ -28,7 +28,7 @@
             </v-row>
         </v-container>
     </v-container>
-    <v-container fluid style="background-image: url('https://global-uploads.webflow.com/6165fc8b9937157a625da2ce/6165fc8b99371515475da45a_Mask%20Group%202.png');
+    <v-container fluid style="background-image: url('https://global-uploads.webflow.com/6165fc8b9937157a625da2ce/6165fc8b99371571455da3de_AdobeStock_151941226.jpeg');
     background-position: 50% 0;
     background-size: cover;
     background-repeat: no-repeat;"
@@ -80,7 +80,7 @@ export default {
     components: { Encuestas },
     async mounted() {
         this.datos_encuesta = (
-            await this.$http.get("/FichasRelevamientos/encuestaModal?id=1")
+            await this.$http.get("/FichasRelevamientos/encuestaModal?id=" + parseInt(this.$route.params.id))
         ).data;
     },
 };
