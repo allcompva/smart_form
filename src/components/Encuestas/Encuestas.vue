@@ -3,8 +3,6 @@
     <v-card elevation="10" shaped :style="[$vuetify.breakpoint.name != 'xs' &
       $vuetify.breakpoint.name != 'sm' &&
       $vuetify.breakpoint.name != 'md' ? {
-      'padding-left': '20px',
-      'padding-right': '20px',
       'margin-bottom': '50px'
     } : {
       'padding-left': '0px',
@@ -12,20 +10,28 @@
       'width': '100%'
     }
     ]">
-      <v-card-title style="color: rgb(26, 71, 54);
-    font-size: 24px;
-    display: block;
-    font-weight: 600;
-    padding-top: 30px;" v-if="data.lstPreguntas != null && data.lstPreguntas != 'undefined'">
-        <h3 style="padding:10px;">{{ data.nombre }}</h3>
-        <hr style="border: solid 1px #1a473642;
-    padding-left: 10px;
-    margin-left: 10px;
-    margin-right: 10px;" />
+      <v-card-title 
+          :style="{ color: 'rgb(26, 71, 54)',
+              fontSize: '24px',
+              display: 'block',
+              fontWeight: '600',
+              paddingTop: '30px',
+              backgroundImage: 'url(' + data.imagen + ')',
+              backgroundPosition: '50% 0px',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat'}"
+          v-if="data.lstPreguntas != null && data.lstPreguntas != 'undefined'">
+            <h3 style="padding:10px;">{{ data.nombre }}</h3>
+            <hr style="border: solid 1px #1a473642;
+                padding-left: 10px;
+                margin-left: 10px;
+                margin-right: 10px;" />
         <h6 style="padding-left:10px;">Formulario de registro</h6>
       </v-card-title>
       <v-card-text style="margin-top: 20px">
         <v-row>
+          <v-col cols="2">
+          </v-col>          
           <v-col cols="8">
             <v-container v-for="(item, indice) in data.lstPreguntas" :key="indice">
               <v-row>
@@ -53,9 +59,7 @@
               </v-row>
             </v-container>
           </v-col>
-          <v-col cols="4">
-            <img
-              :src="data.imagen" />
+          <v-col cols="2">
           </v-col>
         </v-row>
 

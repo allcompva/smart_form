@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "nodejs-base64": "^2.0.0",
     "vue": "^2.6.14",
     "vue-router": "^3.5.4",
     "vuedraggable": "^2.24.3",
@@ -21,6 +22,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "buffer": "^6.0.3",
     "deepmerge": "^4.2.2",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
