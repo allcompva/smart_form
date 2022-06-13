@@ -34,7 +34,7 @@
     background-position: 50% 0;
     background-size: cover;
     background-repeat: no-repeat;"
-    v-else="$vuetify.breakpoint.name == 'xs'">
+    v-else>
         <v-container>
             <v-row>
                 <v-col cols="6"  style="border-right: solid 2px rgb(26, 71, 54)">

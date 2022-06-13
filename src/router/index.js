@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import $storage from '../plugins/storage'
 // import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -31,10 +30,22 @@ const routes = [{
         import( /* webpackChunkName: "Live" */ '../views/Fichas.vue')
 },
 {
+    path: '/FichaUsuario',
+    name: 'FichaUsuario',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/FichaUsuario.vue')
+},
+{
     path: '/CambioPass',
     name: 'CambioPass',
     component: () =>
         import( /* webpackChunkName: "Live" */ '../views/eit/CambioPass.vue')
+},
+{
+    path: '/CambioPassUsuarios',
+    name: 'CambioPassUsuarios',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/CambioPassUsuarios.vue')
 },
 {
     path: '/FichaEit',
@@ -58,19 +69,19 @@ const routes = [{
     path: '/MisInscriptos/:id',
     name: 'MisInscriptos',
     component: () =>
-        import( /* webpackChunkName: "Live" */ '../views/eit/MisInscriptos.vue'),
-        meta: {
-            requiresAuth: true,
-        },        
+        import( /* webpackChunkName: "Live" */ '../views/eit/MisInscriptos.vue'),   
+},
+{
+    path: '/Inscriptos/:id',
+    name: 'Inscriptos',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/Inscriptos.vue'),   
 },
 {
     path: '/eit',
     name: 'eit-home',
     component: () =>
         import( /* webpackChunkName: "landing-AdminPage" */ '../views/eit/AdminPage.vue'),
-    meta: {
-        requiresAuth: true,
-    },
 },]
 const router = new VueRouter({
     mode: 'history',

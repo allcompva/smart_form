@@ -132,8 +132,7 @@
 	</v-container>
 </template>
 <script>
-import { Buffer } from 'buffer';import MisInscriptosVue from './MisInscriptos.vue';
- Buffer.from('anything', 'base64');
+import { Buffer } from 'buffer'; Buffer.from('anything', 'base64');
 export default {
 	data: () => {
 		return {
@@ -165,7 +164,7 @@ export default {
 
 	async mounted() {
 		if (!this.$storage.getTextOrInt("customer_id")) {
-			this.$router.push("/Login");
+			this.$router.push("/");
 		}
 		try {
 			this.desserts = (await this.$http.get("/Fichas/readActivos")).data;

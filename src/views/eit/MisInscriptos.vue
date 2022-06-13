@@ -55,7 +55,7 @@ export default {
 
     async mounted() {
         if (!this.$storage.getTextOrInt("customer_id")) {
-            this.$router.push("/Login");
+            this.$router.push("/");
         }
         try {
             var queryStringBase64 = new Buffer.from(this.$route.params.id, "base64");

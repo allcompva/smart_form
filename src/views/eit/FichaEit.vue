@@ -105,7 +105,7 @@ export default {
 
     async mounted() {
         if (!this.$storage.getTextOrInt("customer_id")) {
-            this.$router.push("/Login");
+            this.$router.push("/");
         }
         this.customer_id = this.$storage.getTextOrInt("customer_id");
         this.apellido = this.$storage.getTextOrInt("apellido");
