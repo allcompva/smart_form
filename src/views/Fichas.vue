@@ -38,7 +38,7 @@
 
                 <v-list>
                   <v-list-item>
-                    <v-btn :href="'Smart_form/' + item.id" text>
+                    <v-btn :href="'SmartFormView/' + item.id" text>
                       <v-icon small class="fa fa-search"></v-icon> Ver
                     </v-btn>
                   </v-list-item>
@@ -226,6 +226,9 @@ export default {
 
   async mounted() {
     try {
+      if (!this.$storage.getTextOrInt("idUsuario")) {
+        this.$router.push("/Login");
+      }
       this.desserts = (await this.$http.get("/Fichas/readCMS")).data;
     } catch (error) {
       this.desserts = null;

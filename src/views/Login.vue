@@ -30,6 +30,13 @@
                                     @click:append="show1 = !show1"></v-text-field>
                             </v-col>
                         </v-row>
+                        <v-row style="margin-top: 30px;">
+                            <v-col cols="12" style="padding-left: 50px; padding-right: 50px;">
+                                <v-select v-model="select" :hint="`${select.state}`" :items="items" item-text="state"
+                                    item-value="state" label="Tipo" persistent-hint return-object single-line>
+                                </v-select>
+                            </v-col>
+                        </v-row>
                         <v-row style="margin-top: 30px; padding-bottom: 30px;">
                             <v-col cols="12">
                                 <v-btn @click="validate()" style="background-color: rgb(31, 74, 54);
@@ -89,7 +96,14 @@ export default {
             dialogError: false,
             txtError: "",
             objUser: null,
+            select: { state: "EIT" },
+            items: [{ state: "EIT" }, { state: "EQUIPO TEOMA" }],
         };
+    },
+    mounted() {
+        if (this.$storage.getTextOrInt("customer_id")) {
+            this.$router.push("/eit");
+        }
     },
     methods: {
         async validate() {
@@ -105,17 +119,39 @@ export default {
             }
             let post = {
                 customer_id: parseInt(this.usuario),
+                usuario: this.usuario,
                 password: this.password,
             };
-            this.objUser = (await this.$http.post("/Eit/autenticar", post)).data;
-            if (this.objUser) {
-                this.$storage.set("idEit", this.objUser.id);
-                this.$storage.set("customer_id", this.objUser.customer_id);
-                this.$storage.set("nombre", this.objUser.apellido + ', ' + this.objUser.nombre);
-                this.$router.push("/eit");
+            if (this.select.state == "EIT") {
+                this.objUser = (await this.$http.post("/Eit/autenticar", post)).data;
+                if (this.objUser) {
+                    this.$storage.set("idEit", this.objUser.id);
+                    this.$storage.set("customer_id", this.objUser.customer_id);
+                    this.$storage.set("nombre", this.objUser.apellido + ', ' + this.objUser.nombre);
+                    this.$storage.set("apellido", this.objUser.apellido);
+                    this.$storage.set("_nombre", this.objUser.nombre);
+                    this.$storage.set("rut", this.objUser.rut);
+                    this.$storage.set("telefono", this.objUser.telefono);
+                    this.$storage.set("mail", this.objUser.mail);
+                    this.$forceUpdate();
+                    location.reload()
+                    this.$router.go(0)
+                    this.$router.push("/eit");
+                }
+                else {
+                    this.snackbar = true;
+                }
             }
-            else {
-                this.snackbar = true;
+            if (this.select.state == "EQUIPO TEOMA") {
+                this.objUser = (await this.$http.post("/Usuarios/autenticar", post)).data;
+                if (this.objUser) {
+                    this.$storage.set("idUsuario", this.objUser.id);
+                    this.$storage.set("nombre", this.objUser.apellido + ', ' + this.objUser.nombre);
+                    this.$router.push("/Fichas");
+                }
+                else {
+                    this.snackbar = true;
+                }
             }
         },
     },

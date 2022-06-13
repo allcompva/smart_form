@@ -89,7 +89,7 @@
                             font-size: 18px;
                             font-weight: 600;
                             line-height: 1em;
-                            letter-spacing: -1.2px;">{{ datos_eit.nombre }}  {{ datos_eit.apellido }}</h2>
+                            letter-spacing: -1.2px;">Sergio Pinto</h2>
                         <h2 style="    
                             margin-top: 5px;
                             color: #696969;
@@ -97,7 +97,7 @@
                             font-size: 16px;
                             font-weight: 500;
                             line-height: 1em;
-                            letter-spacing: 0px;">EIT#{{ datos_eit.customer_id }}</h2>
+                            letter-spacing: 0px;">EIT#112233</h2>
                     </v-col>
                 </v-row>
             </v-container>
@@ -139,7 +139,6 @@ export default {
         return {
             datos_encuesta: null,
             datos_eit: null,
-            informe: null,
         };
     },
     methods: {
@@ -156,13 +155,8 @@ export default {
         var queryStringBase64 = new Buffer.from(this.$route.params.id, "base64");
         var vector = queryStringBase64.toString().split(",");
         this.datos_encuesta = (
-            await this.$http.get("/FichasRelevamientos/encuestaModal?id=" + vector[1])
+            await this.$http.get("/FichasRelevamientos/encuestaModal?id=" + this.$route.params.id)
         ).data;
-
-        this.datos_eit = (
-            await this.$http.get("/Eit/getByCustomer_id?customer_id=" + vector[0])
-        ).data;   
-        this.datos_encuesta.idEit = this.datos_eit.id;
     },
 };
 </script>

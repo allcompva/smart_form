@@ -8,9 +8,9 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-    name: 'Home',
+    name: 'Login',
     component: () =>
-        import( /* webpackChunkName: "Home" */ '../views/Home.vue'),
+        import( /* webpackChunkName: "Home" */ '../views/Login.vue'),
 },
 {
     path: '/FichasPreguntas/:id',
@@ -31,16 +31,37 @@ const routes = [{
         import( /* webpackChunkName: "Live" */ '../views/Fichas.vue')
 },
 {
-    path: '/Smart_form/:id',
-    name: 'Smart_form',
+    path: '/CambioPass',
+    name: 'CambioPass',
     component: () =>
-        import( /* webpackChunkName: "Live" */ '../views/Smart_form.vue')
+        import( /* webpackChunkName: "Live" */ '../views/eit/CambioPass.vue')
+},
+{
+    path: '/FichaEit',
+    name: 'FichaEit',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/eit/FichaEit.vue')
+},
+{
+    path: '/SmartFormView/:id',
+    name: 'SmartFormView',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/SmartFormView.vue')
 },
 {
     path: '/SmartForm/:id',
     name: 'SmartForm',
     component: () =>
         import( /* webpackChunkName: "Live" */ '../views/SmartForm.vue')
+},
+{
+    path: '/MisInscriptos/:id',
+    name: 'MisInscriptos',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/eit/MisInscriptos.vue'),
+        meta: {
+            requiresAuth: true,
+        },        
 },
 {
     path: '/eit',
@@ -50,12 +71,6 @@ const routes = [{
     meta: {
         requiresAuth: true,
     },
-},
-{
-    path: '/Login',
-    name: 'Login',
-    component: () =>
-        import( /* webpackChunkName: "landing-AdminPage" */ '../views/Login.vue'),
 },]
 const router = new VueRouter({
     mode: 'history',
