@@ -47,7 +47,6 @@
                     <v-icon class="fa fa-bars"></v-icon>
                   </v-btn>
                 </template>
-
                 <v-list>
                   <v-list-item>
                     <v-btn :href="'SmartFormView/' + item.id" text>

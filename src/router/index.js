@@ -30,6 +30,12 @@ const routes = [{
         import( /* webpackChunkName: "Live" */ '../views/Fichas.vue')
 },
 {
+    path: '/ListaEIT',
+    name: 'ListaEIT',
+    component: () =>
+        import( /* webpackChunkName: "Live" */ '../views/ListaEIT.vue')
+},
+{
     path: '/FichaUsuario',
     name: 'FichaUsuario',
     component: () =>
