@@ -32,7 +32,7 @@
                                 <v-list>
                                     <v-list-item>
                                         <v-btn @click="
-                                            editaFicha(
+                                            editar(
                                                 item.id,
                                                 item.customer_id,
                                                 item.rut,
@@ -76,6 +76,13 @@ export default {
                 { text: "TELEFONO", value: "telefono" },
             ],
             informe: [],
+            id: 0,
+            customer_id: 0, 
+            rut: "", 
+            apellido: "", 
+            nombre: "", 
+            telefono: "", 
+            mail: "",
         };
     },
 
@@ -91,7 +98,28 @@ export default {
         }
     },
     methods: {
-
+    nuevaFicha() {
+      this.dialogAdd = true;
+      this.idEncuesta = 0;
+      this.nombreFicha = "";
+      this.select.state = "ONLINE";
+      this.imagenFicha = "";
+      this.fechaFicha = "";
+      this.horaFicha = "";
+      this.direccionFicha = "";
+      this.urlFicha = "";
+    },
+    editaFicha(id, customer_id, rut, apellido, nombre, telefono, mail) {
+      this.dialogAdd = true;
+      this.idEncuesta = id;
+      this.nombreFicha = nombre;
+      this.select.state = tipo;
+      this.imagenFicha = imagen;
+      this.fechaFicha = fecha;
+      this.horaFicha = hora;
+      this.direccionFicha = direccion;
+      this.urlFicha = url;
+    },
     },
 };
 </script>
